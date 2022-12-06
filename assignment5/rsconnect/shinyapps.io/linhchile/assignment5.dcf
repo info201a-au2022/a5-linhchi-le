@@ -1,0 +1,13 @@
+name: assignment5
+title: assignment5
+username:
+account: linhchile
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 7810312
+bundleId: 6597813
+url: https://linhchile.shinyapps.io/assignment5/
+when: 1670308240.80074
+lastSyncTime: 1670308240.80075
+asMultiple: FALSE
+asStatic: FALSE
