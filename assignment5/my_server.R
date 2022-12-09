@@ -22,31 +22,38 @@ co2_asia <- co_df %>%
          year > 1999) 
 
 # Country in Asia (7 countries) with lowest amount of Co2 from 2000-2021
-country_asia_low <- co2_asia %>%
+country_asia_low <- function() {
+low_co2 <- co2_asia %>%
   select(country, co2, year) %>%
   group_by(country) %>%
   filter(year > 1999) %>%
   summarize(sum_co2 = sum(co2)) %>%
   filter(sum_co2 == min(sum_co2,na.rm = TRUE)) %>%
   pull(country)
+return(low_co2)
+}
 
 # Year with the highest Co2 in Japan (2000-2021)
-year_high_co2_japan<- co2_asia %>%
+year_high_co2_japan <- function() {
+high_japan_co2<- co2_asia %>%
   select(year, country, co2) %>%
   group_by(year) %>%
   filter(country == "Japan") %>%
   summarize(high_co2 = sum(co2, na.rm = TRUE)) %>%
   filter(high_co2 == max(high_co2, na.rm = TRUE)) %>%
   pull(year)
+return(high_japan_co2)
+}
 
 # Total Co2 in Japan from 2000-2021
-total_co2_japan <- co2_asia %>%
+total_co2_japan <- function() {
+japan_total <- co2_asia %>%
   select(country, co2, year) %>%
   filter(country == "Japan") %>%
   summarize(sum_japan_co2 = sum(co2)) %>%
   pull(sum_japan_co2)
-  
-
+return(japan_total)
+}
 
 
 

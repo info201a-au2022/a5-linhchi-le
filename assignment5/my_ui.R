@@ -6,9 +6,15 @@ library(plotly)
 library(dplyr)
 library(shinythemes)
 
-co_df <- read.csv(
-  "https://raw.githubusercontent.com/owid/co2-data/master/owid-co2-data.csv"
-)
+# Sourcing server
+source("my_server.R")
+
+# Putting values from server to the UI
+country_asia_low <- country_asia_low()
+total_co2_japan <- total_co2_japan()
+year_high_co2_japan <- year_high_co2_japan()
+
+
 # Define UI for application that draws a histogram
 my_ui <- fluidPage(
   
@@ -52,7 +58,10 @@ my_ui <- fluidPage(
     p("In my project, I have created a chart that allows the user to input a 
       country out of the seven that I have mentioned. The user would be able to 
       see the amount of carbon dioxide that the country produces."),
-    
+    img("",
+      src = "https://assets.terrapass.com/wp-content/uploads/2022/08/carbon-dioxide-emissions-from-electricity-photo-of-factory-smoke.jpg", 
+      height = "350px", width = "600px",
+      style= "position:absolute;"),
   ),
 )
     page_two <- tabPanel(
@@ -79,8 +88,8 @@ my_ui <- fluidPage(
     mainPanel(
       plotlyOutput("linegraph"),
       p("In this chart, a country from Asia (China, North Korea, South Korea,
-        Cambodia, Japan, and Mongolia) can be selected. A color can also be 
-        chosen to change the color of the line. The graph shows the 
+        Cambodia, Japan, Mongolia, and Thailand) can be selected. A color can 
+        also be chosen to change the color of the line. The graph shows the 
         annual total production-based emissions of carbon dioxide in the 
         selected country. I included this chart because I was interested in 
         finding out which country would have a higher amount of carbon dioxide.
