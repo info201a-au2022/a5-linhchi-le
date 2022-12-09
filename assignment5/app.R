@@ -12,6 +12,13 @@ library(tidyverse)
 library(ggplot2)
 library(plotly)
 library(dplyr)
+library(shinythemes)
+
+
+
+co_df <- read.csv(
+  "https://raw.githubusercontent.com/owid/co2-data/master/owid-co2-data.csv"
+)
 
 # Sourcing
 source("my_ui.R")
